@@ -4,14 +4,15 @@
 #
 Name     : mvn-jruby
 Version  : 9.1.17.0
-Release  : 1
+Release  : 2
 URL      : https://github.com/jruby/jruby/archive/9.1.17.0.tar.gz
 Source0  : https://github.com/jruby/jruby/archive/9.1.17.0.tar.gz
-Source1  : https://repo1.maven.org/maven2/org/jruby/jruby-complete/9.1.17.0/jruby-complete-9.1.17.0.jar
-Source2  : https://repo1.maven.org/maven2/org/jruby/jruby-complete/9.1.17.0/jruby-complete-9.1.17.0.pom
-Source3  : https://repo1.maven.org/maven2/org/jruby/jruby-core/9.1.17.0/jruby-core-9.1.17.0.jar
-Source4  : https://repo1.maven.org/maven2/org/jruby/jruby-core/9.1.17.0/jruby-core-9.1.17.0.pom
-Source5  : https://repo1.maven.org/maven2/org/jruby/jruby-parent/9.1.17.0/jruby-parent-9.1.17.0.pom
+Source1  : https://repo1.maven.org/maven2/org/jruby/jruby-artifacts/9.1.17.0/jruby-artifacts-9.1.17.0.pom
+Source2  : https://repo1.maven.org/maven2/org/jruby/jruby-complete/9.1.17.0/jruby-complete-9.1.17.0.jar
+Source3  : https://repo1.maven.org/maven2/org/jruby/jruby-complete/9.1.17.0/jruby-complete-9.1.17.0.pom
+Source4  : https://repo1.maven.org/maven2/org/jruby/jruby-core/9.1.17.0/jruby-core-9.1.17.0.jar
+Source5  : https://repo1.maven.org/maven2/org/jruby/jruby-core/9.1.17.0/jruby-core-9.1.17.0.pom
+Source6  : https://repo1.maven.org/maven2/org/jruby/jruby-parent/9.1.17.0/jruby-parent-9.1.17.0.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : EPL-2.0 GPL-2.0 LGPL-2.1 MIT Ruby
@@ -49,24 +50,28 @@ license components for the mvn-jruby package.
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/mvn-jruby
+cp COPYING %{buildroot}/usr/share/package-licenses/mvn-jruby/COPYING
 cp LICENSE.RUBY %{buildroot}/usr/share/package-licenses/mvn-jruby/LICENSE.RUBY
 cp spec/ffi/LICENSE.SPECS %{buildroot}/usr/share/package-licenses/mvn-jruby/spec_ffi_LICENSE.SPECS
 cp spec/mspec/LICENSE %{buildroot}/usr/share/package-licenses/mvn-jruby/spec_mspec_LICENSE
 cp spec/ruby/LICENSE %{buildroot}/usr/share/package-licenses/mvn-jruby/spec_ruby_LICENSE
-mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-complete/9.1.17.0
-cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-complete/9.1.17.0/jruby-complete-9.1.17.0.jar
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-artifacts/9.1.17.0
+cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-artifacts/9.1.17.0/jruby-artifacts-9.1.17.0.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-complete/9.1.17.0
-cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-complete/9.1.17.0/jruby-complete-9.1.17.0.pom
+cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-complete/9.1.17.0/jruby-complete-9.1.17.0.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-complete/9.1.17.0
+cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-complete/9.1.17.0/jruby-complete-9.1.17.0.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-core/9.1.17.0
-cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-core/9.1.17.0/jruby-core-9.1.17.0.jar
+cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-core/9.1.17.0/jruby-core-9.1.17.0.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-core/9.1.17.0
-cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-core/9.1.17.0/jruby-core-9.1.17.0.pom
+cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-core/9.1.17.0/jruby-core-9.1.17.0.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-parent/9.1.17.0
-cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-parent/9.1.17.0/jruby-parent-9.1.17.0.pom
+cp %{SOURCE6} %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-parent/9.1.17.0/jruby-parent-9.1.17.0.pom
 
 
 %files
@@ -74,6 +79,7 @@ cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-parent/
 
 %files data
 %defattr(-,root,root,-)
+/usr/share/java/.m2/repository/org/jruby/jruby-artifacts/9.1.17.0/jruby-artifacts-9.1.17.0.pom
 /usr/share/java/.m2/repository/org/jruby/jruby-complete/9.1.17.0/jruby-complete-9.1.17.0.jar
 /usr/share/java/.m2/repository/org/jruby/jruby-complete/9.1.17.0/jruby-complete-9.1.17.0.pom
 /usr/share/java/.m2/repository/org/jruby/jruby-core/9.1.17.0/jruby-core-9.1.17.0.jar
@@ -82,6 +88,7 @@ cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/org/jruby/jruby-parent/
 
 %files license
 %defattr(0644,root,root,0755)
+/usr/share/package-licenses/mvn-jruby/COPYING
 /usr/share/package-licenses/mvn-jruby/LICENSE.RUBY
 /usr/share/package-licenses/mvn-jruby/spec_ffi_LICENSE.SPECS
 /usr/share/package-licenses/mvn-jruby/spec_mspec_LICENSE
